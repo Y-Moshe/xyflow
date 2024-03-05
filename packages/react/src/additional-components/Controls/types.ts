@@ -28,6 +28,14 @@ export type ControlProps = {
   children?: ReactNode;
   /** Style applied to container */
   style?: React.CSSProperties;
+  /** Provide default control icons */
+  icons?: {
+    plusIcon?: React.JSX.Element;
+    minusIcon?: React.JSX.Element;
+    fitViewIcon?: React.JSX.Element;
+    lockIcon?: React.JSX.Element;
+    unLockIcon?: React.JSX.Element;
+  }
   /** ClassName applied to container */
   className?: string;
   'aria-label'?: string;

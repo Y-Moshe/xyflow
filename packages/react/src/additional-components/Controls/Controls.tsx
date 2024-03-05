@@ -23,6 +23,7 @@ const selector = (s: ReactFlowState) => ({
 
 function ControlsComponent({
   style,
+  icons,
   showZoom = true,
   showFitView = true,
   showInteractive = true,
@@ -82,7 +83,7 @@ function ControlsComponent({
             aria-label="zoom in"
             disabled={maxZoomReached}
           >
-            <PlusIcon />
+            { icons?.plusIcon ? icons.plusIcon : <PlusIcon /> }
           </ControlButton>
           <ControlButton
             onClick={onZoomOutHandler}
@@ -91,7 +92,7 @@ function ControlsComponent({
             aria-label="zoom out"
             disabled={minZoomReached}
           >
-            <MinusIcon />
+            { icons?.minusIcon ? icons.minusIcon : <MinusIcon /> }
           </ControlButton>
         </>
       )}
@@ -102,7 +103,7 @@ function ControlsComponent({
           title="fit view"
           aria-label="fit view"
         >
-          <FitViewIcon />
+          { icons?.fitViewIcon ? icons.fitViewIcon : <FitViewIcon /> }
         </ControlButton>
       )}
       {showInteractive && (
@@ -112,7 +113,11 @@ function ControlsComponent({
           title="toggle interactivity"
           aria-label="toggle interactivity"
         >
-          {isInteractive ? <UnlockIcon /> : <LockIcon />}
+          {
+            isInteractive
+            ? icons?.unLockIcon ? icons.unLockIcon : <UnlockIcon />
+            : icons?.lockIcon ? icons.lockIcon : <LockIcon />
+          }
         </ControlButton>
       )}
       {children}
